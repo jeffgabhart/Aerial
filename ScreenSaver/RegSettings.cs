@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using System;
+using System.IO;
 
 namespace ScreenSaver
 {
@@ -9,6 +11,7 @@ namespace ScreenSaver
         public bool UseTimeOfDay = true;
         public bool MultiscreenDisabled = true;
         public bool CacheVideos = false;
+        public string CacheLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Aerial");
 
         public RegSettings()
         {
@@ -19,6 +22,7 @@ namespace ScreenSaver
                 UseTimeOfDay = bool.Parse(key.GetValue(nameof(UseTimeOfDay)) as string ?? "True");
                 MultiscreenDisabled = bool.Parse(key.GetValue(nameof(MultiscreenDisabled)) as string ?? "True");
                 CacheVideos = bool.Parse(key.GetValue(nameof(CacheVideos)) as string ?? "True");
+                CacheLocation = key.GetValue(nameof(CacheLocation)) as string;
             }
         }
 
@@ -33,8 +37,7 @@ namespace ScreenSaver
             key.SetValue(nameof(UseTimeOfDay), UseTimeOfDay);
             key.SetValue(nameof(MultiscreenDisabled), MultiscreenDisabled);
             key.SetValue(nameof(CacheVideos), CacheVideos);
-
+            key.SetValue(nameof(CacheLocation), CacheLocation);
         }
-
     }
 }

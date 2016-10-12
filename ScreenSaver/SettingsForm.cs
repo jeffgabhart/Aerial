@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ScreenSaver
@@ -21,6 +22,7 @@ namespace ScreenSaver
             chkUseTimeOfDay.Checked = settings.UseTimeOfDay;
             chkMultiscreenDisabled.Checked = settings.MultiscreenDisabled;
             chkCacheVideos.Checked = settings.CacheVideos;
+            fbdCacheLocation.SelectedPath = settings.CacheLocation;
         }
 
         /// <summary>
@@ -33,6 +35,7 @@ namespace ScreenSaver
             settings.UseTimeOfDay = chkUseTimeOfDay.Checked;
             settings.MultiscreenDisabled = chkMultiscreenDisabled.Checked;
             settings.CacheVideos = chkCacheVideos.Checked;
+            settings.CacheLocation = fbdCacheLocation.SelectedPath;
 
             settings.SaveSettings();
             
@@ -48,6 +51,11 @@ namespace ScreenSaver
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnCacheLocation_Click(object sender, EventArgs e)
+        {
+            fbdCacheLocation.ShowDialog();
         }
     }
 }
