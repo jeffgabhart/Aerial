@@ -78,7 +78,7 @@
             this.Text = "Aerial Screensaver";
             this.Load += new System.EventHandler(this.ScreenSaverForm_Load);
             this.Shown += new System.EventHandler(this.ScreenSaverForm_Shown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ScreenSaverForm_KeyPress);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ScreenSaverForm_KeyEvent);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ScreenSaverForm_MouseClick);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ScreenSaverForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();

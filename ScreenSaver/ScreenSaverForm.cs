@@ -205,7 +205,7 @@ namespace ScreenSaver
             ResizePlayer();
 
             this.player.MouseMoveEvent += player_MouseMoveEvent;
-            this.player.KeyPressEvent += player_KeyPressEvent;
+            this.player.KeyDownEvent += player_KeyDownEvent;
             this.player.PlayStateChange += player_PlayStateChange;
         }
         
@@ -246,9 +246,9 @@ namespace ScreenSaver
             };
         }
 
-        private void player_KeyPressEvent(object sender, AxWMPLib._WMPOCXEvents_KeyPressEvent e)
+        private void player_KeyDownEvent(object sender, AxWMPLib._WMPOCXEvents_KeyDownEvent e)
         {
-            ScreenSaverForm_KeyPress(sender, new KeyPressEventArgs((char)e.nKeyAscii));
+            ScreenSaverForm_KeyEvent(sender, new KeyEventArgs(Keys.Space));
         }
 
         private void player_MouseMoveEvent(object sender, AxWMPLib._WMPOCXEvents_MouseMoveEvent e)
@@ -288,7 +288,7 @@ namespace ScreenSaver
             
         }
 
-        private void ScreenSaverForm_KeyPress(object sender, KeyPressEventArgs e)
+        private void ScreenSaverForm_KeyEvent(object sender, KeyEventArgs e)
         {
             ShouldExit();
         }
